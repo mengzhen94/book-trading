@@ -1,3 +1,46 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Book Trading Club</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li id="home"><a routerLink="/home" routerLinkActive="active">HOME</a></li>
+        <li id="books"><a routerLink="/books" routerLinkActive="active">BOOKS</a></li>
+        <span *ngIf="auth">
+          <li id="mybooks"><a routerLink="/mybooks" routerLinkActive="active">MY BOOKS</a></li>
+        </span>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!auth" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+            aria-haspopup="true" aria-expanded="false">LOGIN <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/login" routerLinkActive="active">Twitter</a></li>
+            <li><a routerLink="/login" routerLinkActive="active">Facebook</a></li>
+          </ul>
+        </li>
+        <li *ngIf="auth" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+            aria-haspopup="true" aria-expanded="false">SETTINGS <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+            <li><a (click)="logout()" >Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
