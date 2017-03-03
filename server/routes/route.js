@@ -9,9 +9,20 @@ router.route('/api').get(
 
 router.route('/signup')
 	.post(passport.authenticate('signup'),
-  		function(req, res) {
+  		(req, res) =>  {
     		res.sendStatus(200);
-  		})
+  		});
+
+router.route('/login')
+	.post(passport.authenticate('login'),
+  		(req, res) => {
+    		res.sendStatus(200);
+  		});
+
+router.route('/logout').post((req, res) => {
+	req.logout();
+  	res.sendStatus(200);
+});
 
 module.exports = router;
 

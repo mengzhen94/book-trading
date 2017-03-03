@@ -16,9 +16,7 @@
       <ul class="nav navbar-nav">
         <li id="home"><a routerLink="/home" routerLinkActive="active">HOME</a></li>
         <li id="books"><a routerLink="/books" routerLinkActive="active">BOOKS</a></li>
-        <span *ngIf="auth">
-          <li id="mybooks"><a routerLink="/mybooks" routerLinkActive="active">MY BOOKS</a></li>
-        </span>
+        <li *ngIf="auth" id="mybooks"><a routerLink="/mybooks" routerLinkActive="active">MY BOOKS</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -27,6 +25,7 @@
             aria-haspopup="true" aria-expanded="false">LOGIN <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
+            <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
             <li><a routerLink="/signup" routerLinkActive="active">Sign Up</a></li>
           </ul>
         </li>

@@ -1,6 +1,5 @@
 'use strict';
-var express = require("express"),
-	//routes = require("./server/routes/route.js"),
+const express = require("express"),
 	mongoose = require("mongoose"),
 	passport = require('passport'),
 	session = require('express-session'),
@@ -40,7 +39,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./server/config/passport');
-//routes(app, passport);
 
 let routes = require('./server/routes/route');
 

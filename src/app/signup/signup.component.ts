@@ -16,9 +16,7 @@ export class SignUpComponent {
     ) { }
 
     signup(form) {
-
-        console.log('signup.component signup!!!');
-
+        
         this.userService.register(form)
             .subscribe(result=>{
                 //this.router.navigateByUrl('books');

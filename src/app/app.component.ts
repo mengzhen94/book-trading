@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: []
+  providers: [UserService]
 })
 export class AppComponent  implements OnInit {
 
@@ -13,8 +14,24 @@ export class AppComponent  implements OnInit {
 
   constructor(
     private router:Router,
-    //private userService:UserService
+    private userService:UserService
     ) { }
+
+    changeToAuth(value:boolean) {
+      this.auth = value;
+    }
+
+    logout() {
+      this.userService.logout()
+        .subscribe(result=>{
+                this.userService.openSnackBar(`Successfully Logout!`);
+                this.router.navigateByUrl('/home');
+                this.changeToAuth(false);
+            },error=>{
+                this.userService.openSnackBar(`${error.statusText}. Please Try Again`);
+                this.changeToAuth(true);
+            });
+    }
 
     ngOnInit() {
     }
