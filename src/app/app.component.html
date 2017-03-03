@@ -27,8 +27,7 @@
             aria-haspopup="true" aria-expanded="false">LOGIN <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/auth/github">Github</a></li>
-            <li><a href="/auth/facebook">Facebook</a></li>
+            <li><a routerLink="/signup" routerLinkActive="active">Sign Up</a></li>
           </ul>
         </li>
         <li *ngIf="auth" class="dropdown">
@@ -44,4 +43,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
+<router-outlet></router-outlet>

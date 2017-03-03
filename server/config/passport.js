@@ -1,77 +1,60 @@
-'use strict';
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
-var GitHubStrategy = require('passport-github').Strategy;
-var FaceStrategy = require('passport-facebook').Strategy;
-var User = require('../model/user');
-var configAuth = require('./auth');
+const User = require('../model/user');
 
-module.exports = function(passport){
+passport.use('signup',new LocalStrategy({
+  usernameField:'email',
+  passwordField:'password',
+  passReqToCallback:true
+},(req,email,password,done)=>{
+  User.findOne({email:email})
+      .then(user=>{
+        if(user){
+          done(null,false,{message:'This email has been used'});
+        } else {
+          let newUser = new User();
+          newUser.email = email;
+          newUser.password = newUser.generateHash(password);
+          newUser.username = req.body.username;
+          return newUser.save();
+        }
+      })
+      .then(user=>{
+        done(null,user);
+      })
+      .catch(err=>{
+        return done(err);
+      })
+}))
 
-	passport.serializeUser(function(user, done){
-		done(null, user.id);
-	});
-	passport.deserializeUser(function(id, done){
-		User.findById(id, function(err, user){
-			done(err, user);
-		});
-	});
+passport.use('login',new LocalStrategy({
+  usernameField:'email',
+  passwordField:'password'
+},(email,password,done)=>{
+  User.findOne({email:email})
+      .then(user=>{
+        if(!user){
+          return done(null,false,{message:'Incorrect useremail'});
+        }
+        if(!user.validPassword(password)){
+          return done(null,false,{message:'Incorrect password'});
+        }
+        return done(null,user);
+      })
+      .catch(err=>{
+        return done(err);
+      })
+}));
 
-	passport.use(new GitHubStrategy({
-		clientID: configAuth.githubAuth.clientID,
-		clientSecret: configAuth.githubAuth.clientSecret,
-		callbackURL: configAuth.githubAuth.callbackURL
-	 },
-	    function(Token, refreshToken, profile, done) {
-		    process.nextTick(function(){
-			    User.findOne({'userId':profile.id}, function(err,user){
-				    if(err)
-					    return done(err);
-				    if(user){
-					    return done(null, user);
-				    }else{
-					    var newUser = new User();
+passport.serializeUser((user,done)=>{
+  done(null,user.id);
+});
 
-					    newUser.userId = profile.id;
-					    newUser.displayName = profile.displayName;
-		
-					    newUser.save(function(err){
-						    if(err)
-							    throw err;
-						    return done(null, newUser);
-					    });
-				    }
-			    });		
-		    });
-  	    }
-	));
+passport.deserializeUser((id,done)=>{
+  User.findById(id,(err,user)=>{
+    done(err,user);
+  })
+});
 
-	passport.use(new FaceStrategy({
-		clientID: configAuth.facebookAuth.clientID,
-		clientSecret: configAuth.facebookAuth.clientSecret,
-		callbackURL: configAuth.facebookAuth.callbackURL
-	 },
-	    function(Token, refreshToken, profile, done) {
-		    process.nextTick(function(){
-			    User.findOne({'userId':profile.id}, function(err,user){
-				    if(err)
-					    return done(err);
-				    if(user){
-					    return done(null, user);
-				    }else{
-					    var newUser = new User();
-
-					    newUser.userId = profile.id;
-					    newUser.displayName = profile.displayName;
-
-					    newUser.save(function(err){
-						    if(err)
-							    throw err;
-						    return done(null, newUser);
-					    });
-				    }
-			    });		
-		    });
-  	    }
-	));
-
-};
+console.log('passport is running');

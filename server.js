@@ -1,11 +1,11 @@
 'use strict';
 var express = require("express"),
-	routes = require("./server/routes/index.js"),
+	//routes = require("./server/routes/route.js"),
 	mongoose = require("mongoose"),
 	passport = require('passport'),
 	session = require('express-session'),
 	bodyParser = require('body-parser'),
-    path = require('path');;
+    path = require('path');
 
 var app = express();
 require('dotenv').load();
@@ -13,16 +13,22 @@ require('dotenv').load();
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_URI);
 
-app.use(bodyParser.urlencoded())
+let connection = mongoose.connection;
+connection.on('error',()=>{
+  console.log(`Error on connecting`);
+});
+connection.once('open',()=>{
+  console.log(`My app is using `);
+});
+connection.on('disconnected',()=>{
+  console.log(`Successfully disconnected from `);
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 // Point static path to dist => angular
 app.use(express.static(path.join(__dirname, 'dist')));
-
-/*
-app.use('/public', express.static(process.cwd() + '/public'));
-app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
-app.use('/common', express.static(process.cwd() + '/app/common'));
-*/
 
 app.use(session({
 	secret:'secretBook',
@@ -30,12 +36,17 @@ app.use(session({
 	saveUnintialized:true
 }));
 
-require('./server/config/passport')(passport);
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-routes(app, passport);
+require('./server/config/passport');
+//routes(app, passport);
+
+let routes = require('./server/routes/route');
+
+
+app.use('/api', routes);
+
 
 var port = process.env.PORT || 8080;
 app.listen(8080, function(){
