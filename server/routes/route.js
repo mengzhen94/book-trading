@@ -27,7 +27,8 @@ router.route('/logout').post((req, res) => {
 });
 
 router.route('/profile').get(user.getProfile);
-     
+router.route('/changeProfile').post(user.changeProfile);    
+router.route('/changePassword').post(user.changePassword);   
 
 
 module.exports = router;

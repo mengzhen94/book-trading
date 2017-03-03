@@ -56,6 +56,15 @@ export class UserService {
         return this.http.post(url,body,reqOptions).map(res => res);
     }
 
+     changePassword(form){
+        let url = `/api/changePassword`;
+        let body = JSON.stringify(form);
+        let headers = new Headers({'Content-Type':'application/json'});
+        let reqOptions = new RequestOptions({headers:headers});
+
+        return this.http.post(url,body,reqOptions).map(res => res);
+    }
+
 
     openSnackBar(message:string){
         let config = new MdSnackBarConfig();

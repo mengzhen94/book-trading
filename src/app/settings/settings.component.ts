@@ -45,6 +45,26 @@ export class SettingsComponent implements OnInit {
             });
     }
 
+    changePassword(form) {
+        this.userService.changePassword(form)
+            .subscribe(result=>{
+                this.userService.logout()
+                    .subscribe(result=>{
+                        this.userService.openSnackBar(`Successfully Update Password!`);
+                        this.router.navigateByUrl('login');
+                        this.appComponent.changeToAuth(false);
+                    })
+            },
+            error=>{
+                if(error.status == 401) {
+                    this.userService.openSnackBar('Wrong Password!!');
+                }else{
+                    this.userService.openSnackBar(`${error.statusText}. Please Try Again`);
+                }
+            });
+    }
+
+
     ngOnInit() {
         this.getProfile();
     }
