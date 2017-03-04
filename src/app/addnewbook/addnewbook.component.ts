@@ -29,7 +29,6 @@ export class AddnewbookComponent implements OnInit {
         this.loading = false;
         if(books.length){
           this.books = books;
-          console.log("books: ", books);
         } else {
           this.isfound = false;
         }
@@ -40,6 +39,18 @@ export class AddnewbookComponent implements OnInit {
         console.log(error);
       })
     }
+  }
+
+  addBook(book){
+    console.log("added book: ", book);
+    this.bookService.addBook(book)
+        .subscribe(books=>{
+        
+        
+      },
+      error=>{
+        
+      })
   }
 
   ngOnInit() {

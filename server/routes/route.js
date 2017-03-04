@@ -32,7 +32,7 @@ router.route('/changeProfile').post(user.changeProfile);
 router.route('/changePassword').post(user.changePassword);   
 
 router.route('/book/search').get(book.search);
-
+router.route('/book/addbook').post(book.addBook);  
 
 
 module.exports = router;
