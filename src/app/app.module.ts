@@ -14,8 +14,8 @@ import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BookComponent } from './book/book.component';
-import { MybookComponent } from './mybook/mybook.component';
-import { AddnewbookComponent } from './addnewbook/addnewbook.component';
+import { MybookModule } from './mybook/mybook.module';
+//import { AddnewbookComponent } from './addnewbook/addnewbook.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { AddnewbookComponent } from './addnewbook/addnewbook.component';
     LoginComponent,
     SettingsComponent,
     BookComponent,
-    MybookComponent,
-    AddnewbookComponent,
+    //MybookComponent,
+    //AddnewbookComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,7 @@ import { AddnewbookComponent } from './addnewbook/addnewbook.component';
     HttpModule,
     MaterialModule.forRoot(),
     AppRoutingModule,
+    MybookModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,5 @@
-<p>
-  addnewbook works!
-</p>
-
 <input placeholder="Add your Book" name="title" #search (keyup.enter)="addnewbook(search.value)" ngModel>
+
 <div *ngFor="let book of books">
   {{book.title}}
 </div>
