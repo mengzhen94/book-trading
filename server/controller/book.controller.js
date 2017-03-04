@@ -8,7 +8,7 @@ function search(req, res){
     let keywords = req.query.keyword;
 	books.search(keywords, (error, results) => {
         if ( !error ) {
-            console.log(results);
+            //console.log(results);
             res.json(results);
         } else {
             res.json({err:err.message});

@@ -22,13 +22,14 @@ export class AddnewbookComponent implements OnInit {
     private bookService:BookService,
   ) { }
 
-  addnewbook(title: string) {
+  searchBook(title: string) {
     if(title !== ''){
       this.bookService.searchBook(title)
         .subscribe(books=>{
         this.loading = false;
         if(books.length){
           this.books = books;
+          console.log("books: ", books);
         } else {
           this.isfound = false;
         }
