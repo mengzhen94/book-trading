@@ -13,6 +13,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
+import { BookComponent } from './book/book.component';
+import { MybookComponent } from './mybook/mybook.component';
+import { AddnewbookComponent } from './addnewbook/addnewbook.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { SettingsComponent } from './settings/settings.component';
     SignUpComponent,
     LoginComponent,
     SettingsComponent,
+    BookComponent,
+    MybookComponent,
+    AddnewbookComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ var path = process.cwd();
 const passport = require('passport');
 
 var user = require('../controller/user.controller');
+var book = require('../controller/book.controller');
     
 router.route('/api').get(
 	(req, res) => {
@@ -29,6 +30,9 @@ router.route('/logout').post((req, res) => {
 router.route('/profile').get(user.getProfile);
 router.route('/changeProfile').post(user.changeProfile);    
 router.route('/changePassword').post(user.changePassword);   
+
+router.route('/book/search').get(book.search);
+
 
 
 module.exports = router;
