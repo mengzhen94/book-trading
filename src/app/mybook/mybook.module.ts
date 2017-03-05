@@ -6,7 +6,8 @@ import { HttpModule } from '@angular/http';
 import { MybookComponent } from './mybook.component';
 import { AddnewbookComponent} from '../addnewbook/addnewbook.component';
 import { MybookRoutingModule }   from './mybook-routing.module';
-
+import { ShowMybookComponent } from '../showmybooks/showmybooks.component';
+ 
 @NgModule({
   imports: [ 
       CommonModule,
@@ -17,6 +18,7 @@ import { MybookRoutingModule }   from './mybook-routing.module';
   declarations: [
     MybookComponent,
     AddnewbookComponent,
+    ShowMybookComponent,
   ]
 })
 export class MybookModule { }

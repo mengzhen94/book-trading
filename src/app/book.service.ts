@@ -10,6 +10,7 @@ export class BookService {
 
     constructor(
         private http: Http,
+        private mdSnackBar: MdSnackBar,
     ) { }
 
     searchBook(title: string) {
@@ -24,6 +25,17 @@ export class BookService {
         let reqOptions = new RequestOptions({headers:headers});
 
         return this.http.post(url,body,reqOptions).map(res => res);
+    }
+
+    getMyBooks(){
+        let url = `/api/book/mybooks`;
+        return this.http.get(url).map(res => res.json()); 
+    }
+
+    openSnackBar(message:string){
+        let config = new MdSnackBarConfig();
+        config.duration = 3000;
+        this.mdSnackBar.open(message,'OK', config);
     }
 
 }

@@ -33,6 +33,7 @@ router.route('/changePassword').post(user.changePassword);
 
 router.route('/book/search').get(book.search);
 router.route('/book/addbook').post(book.addBook);  
+router.route('/book/mybooks').get(book.getMybooks);
 
 
 module.exports = router;

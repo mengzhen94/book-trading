@@ -4,12 +4,14 @@ import { Routes,
 
 import { AddnewbookComponent} from '../addnewbook/addnewbook.component';
 import { MybookComponent} from './mybook.component';
+import { ShowMybookComponent } from '../showmybooks/showmybooks.component';
 
 const routes: Routes = [
   { path: '',
     component: MybookComponent,
     children: [
-      //{ path: '',    component: HeroListComponent },
+      { path: '', redirectTo: '/showmybook', pathMatch: 'full' },
+      { path: 'showmybook', component: ShowMybookComponent },
       { path: 'addbook', component: AddnewbookComponent }
     ]
   }

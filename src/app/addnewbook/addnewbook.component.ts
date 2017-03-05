@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addnewbook',
@@ -20,6 +21,7 @@ export class AddnewbookComponent implements OnInit {
 
   constructor(
     private bookService:BookService,
+    private router: Router,
   ) { }
 
   searchBook(title: string) {
@@ -42,14 +44,14 @@ export class AddnewbookComponent implements OnInit {
   }
 
   addBook(book){
-    console.log("added book: ", book);
+    //console.log("added book: ", book);
     this.bookService.addBook(book)
         .subscribe(books=>{
-        
-        
+            this.bookService.openSnackBar(`Successfully Add Book!`);
+            this.router.navigateByUrl('/showmybook');
       },
       error=>{
-        
+        this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
       })
   }
 

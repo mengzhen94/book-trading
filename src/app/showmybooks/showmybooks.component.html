@@ -1,0 +1,13 @@
+<div class="container">
+  <ul class="form-list">
+    <li *ngFor="let book of books">
+      <div class="form-group col-sm-2"><img src="{{book.thumbnail}}" alt="bookImg"></div>
+      <div class="form-group col-sm-8">
+        <a href="{{book.link}}" target="_blank"><span class="text" >{{book.title}}</span></a>
+        <div>
+          <button class="add btn btn-default " id="{{book.id}}" (click)="removeBook(book)">Remove</button>
+        </div>
+      </div>   
+    </li>
+  </ul>
+</div>

@@ -1,5 +1,7 @@
 'use strict';
 const router = require('express').Router();
+var async = require('async');
+
 const Users = require('../model/user');
 
 const Book = require('../model/book');
@@ -58,9 +60,43 @@ function addBook(req, res){
 
 };
 
+function getMybooks(req, res){
+    let userID = req.user._id;
+    let getBooks = [];
+    UserBook.find({userId: userID})
+        .then(userbooks => {
+            if(userbooks){
+                //let gotBooks = [];
+                let length = userbooks.length;
+                let count = 0;
+                userbooks.forEach(userbook => {
+                    let bookId = userbook.bookId;
+                    Book.findById(bookId)
+                        .then(book => {
+                            count ++;
+                            if(book){
+                                getBooks.push(book);
+                                if(count === length){
+                                    console.log("count: ", count);
+                                    console.log("getBooks: ", getBooks);
+                                    return res.json(getBooks);
+                                }
+                            }
+                        })
+                })
+            }else{
+                return res.json(getBooks);
+            }
+        })
+        .catch(err => {
+            res.json({err:err.message});
+        });
+};
+
 
 
 module.exports = {
   search,
-  addBook
+  addBook,
+  getMybooks
 }
