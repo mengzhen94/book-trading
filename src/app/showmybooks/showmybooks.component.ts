@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookService } from '../book.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ShowMybookComponent implements OnInit {
 
     constructor(
         private bookService:BookService,
+        private router: Router,
     ) { }
 
     showMybooks(){
@@ -21,6 +23,17 @@ export class ShowMybookComponent implements OnInit {
                 if(books.length){
                     this.books = books;
                 }
+            })
+    }
+
+    removeBook(book) {
+        this.bookService.removeBook(book)
+            .subscribe(books=>{
+                this.bookService.openSnackBar(`Successfully Delete Book!`);
+                this.router.navigateByUrl('/showmybook');
+            },
+            error=>{
+                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 

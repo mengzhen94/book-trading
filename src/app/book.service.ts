@@ -32,6 +32,15 @@ export class BookService {
         return this.http.get(url).map(res => res.json()); 
     }
 
+    removeBook(book) {
+        let url = `/api/book/mybooks/removebook`;
+        let body = JSON.stringify(book);
+        let headers = new Headers({'Content-Type':'application/json'});
+        let reqOptions = new RequestOptions({headers:headers});
+
+        return this.http.post(url,body,reqOptions).map(res => res);
+    }
+
     openSnackBar(message:string){
         let config = new MdSnackBarConfig();
         config.duration = 3000;

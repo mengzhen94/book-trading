@@ -34,7 +34,7 @@ router.route('/changePassword').post(user.changePassword);
 router.route('/book/search').get(book.search);
 router.route('/book/addbook').post(book.addBook);  
 router.route('/book/mybooks').get(book.getMybooks);
-
+router.route('/book/mybooks/removebook').post(book.removeBook);  
 
 module.exports = router;
 

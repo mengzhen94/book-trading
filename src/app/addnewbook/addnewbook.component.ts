@@ -44,7 +44,6 @@ export class AddnewbookComponent implements OnInit {
   }
 
   addBook(book){
-    //console.log("added book: ", book);
     this.bookService.addBook(book)
         .subscribe(books=>{
             this.bookService.openSnackBar(`Successfully Add Book!`);
