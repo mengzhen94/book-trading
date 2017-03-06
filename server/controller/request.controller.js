@@ -39,7 +39,7 @@ function getRequest(req, res){
     console.log("userID: ", userID);
     Request.find({requesterid: userID})
         .then(requests => {
-            console.log("requests: ", requests);
+            //console.log("requests: ", requests);
             if(requests){
                 res.json(requests);
             }else{
@@ -51,18 +51,22 @@ function getRequest(req, res){
         })
 };
 
-function removeBook(req, res){
+function deleteRequest(req, res){
     let userID = req.user._id;
     console.log("req.body: ", req.body);
-    let bookID = req.body._id;
 
-    Book.remove({_id: bookID, owner: userID})
-        .then(result => {
-            return res.json();
+    Request.remove({_id: req.body._id})
+        .then(sucess => {
+            return Book.findOneAndUpdate({_id:req.body.bookid},{requested:false})
+        })
+        .then(success => {
+            res.json();
         })
         .catch(err => {
             res.json({err:err.message});
         })
+
+
 };
 
 
@@ -71,4 +75,5 @@ function removeBook(req, res){
 module.exports = {
   addRequest,
   getRequest,
+  deleteRequest,
 }

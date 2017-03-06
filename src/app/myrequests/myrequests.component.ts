@@ -29,6 +29,14 @@ export class MyrequestComponent implements OnInit {
             })
     }
 
+    deleteRequest(request){
+        this.requestService.deleteMyRequest(request)
+            .subscribe(requests => {
+                
+                this.bookService.openSnackBar(`Successfully Delete Request !`);
+            })
+    }
+
   ngOnInit() {
       this.showMyrequests();
   }

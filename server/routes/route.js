@@ -41,6 +41,7 @@ router.route('/book/mybooks/removebook').post(book.removeBook);
 
 router.route('/request/addrequest').post(request.addRequest); 
 router.route('/request').get(request.getRequest);
+router.route('/request/reletemyrequest').post(request.deleteRequest); 
 
 module.exports = router;
 
