@@ -30,7 +30,8 @@ export class RequesttomeComponent implements OnInit {
     approveRequest(request){
         this.requestService.apprRequeststoMe(request)
             .subscribe(requests => {
-                this.requestService.openSnackBar(`Successfully Approve Request !`);
+                this.requestService.openSnackBar(`Successfully Update Request !`);
+                this.showRequeststome();
             })
     }
 

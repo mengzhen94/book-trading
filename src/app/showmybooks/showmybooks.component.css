@@ -31,3 +31,14 @@ img{
     height: 80px;
     width: 80px;
 }
+
+.container {
+    padding-left: 0px; 
+    margin-right: 0px;
+    margin-left: 0px; 
+}
+
+.form-list {
+    padding-left: 0px;
+    margin-top: 0px;
+}

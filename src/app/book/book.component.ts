@@ -32,7 +32,7 @@ export class BookComponent implements OnInit {
         this.requestService.requestBook(book)
             .subscribe(books => {
                 this.requestService.openSnackBar(`Successfully Request Book!`);
-                this.router.navigateByUrl('/books', { skipLocationChange: true });
+                this.showBooks();
             })
     }
 

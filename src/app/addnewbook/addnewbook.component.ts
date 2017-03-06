@@ -10,14 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AddnewbookComponent implements OnInit {
 
-  searchText:string;
   books:[any]
-  cols:number = 6;
-  loading:boolean = true;
-  addingBook:boolean = false;
+  loading:boolean = false;
   error:boolean = false;
-  isfound:boolean = true;
-  addedBook=[];
 
   constructor(
     private bookService:BookService,
@@ -25,14 +20,16 @@ export class AddnewbookComponent implements OnInit {
   ) { }
 
   searchBook(title: string) {
+    this.loading = true;
     if(title !== ''){
       this.bookService.searchBook(title)
         .subscribe(books=>{
         this.loading = false;
         if(books.length){
           this.books = books;
+          this.loading = false;
         } else {
-          this.isfound = false;
+          
         }
       },
       error=>{
