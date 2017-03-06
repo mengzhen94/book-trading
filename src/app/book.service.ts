@@ -21,6 +21,7 @@ export class BookService {
     addBook(book) {
         let url = `/api/book/addbook`;
         let body = JSON.stringify(book);
+        console.log("body:", body);
         let headers = new Headers({'Content-Type':'application/json'});
         let reqOptions = new RequestOptions({headers:headers});
 
@@ -39,6 +40,11 @@ export class BookService {
         let reqOptions = new RequestOptions({headers:headers});
 
         return this.http.post(url,body,reqOptions).map(res => res);
+    }
+
+    getAllBooks(){
+        let url = `/api/book`;
+        return this.http.get(url).map(res => res.json()); 
     }
 
     openSnackBar(message:string){

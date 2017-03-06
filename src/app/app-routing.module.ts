@@ -5,8 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
-//import { MybookComponent } from './mybook/mybook.component';
-//import { AddnewbookComponent} from './addnewbook/addnewbook.component';
+import { BookComponent } from './book/book.component';
  
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,8 +13,7 @@ const routes: Routes = [
     { path: 'signup', component: SignUpComponent },
     { path: 'login', component: LoginComponent },
     { path: 'profile', component: SettingsComponent },
-    //{ path: 'mybooks', component: MybookComponent },
-    //{ path: 'addbook', component: AddnewbookComponent },
+    { path: 'books', component: BookComponent },
     { path: 'mybooks', loadChildren: 'app/mybook/mybook.module#MybookModule' },
 ];
 

@@ -5,6 +5,9 @@
       <div class="form-group col-sm-8">
         <a href="{{book.link}}" target="_blank"><span class="text" >{{book.title}}</span></a>
         <div>
+          <span class="text">Id: {{book._id}}</span>
+        </div>
+        <div>
           <button class="add btn btn-default " id="{{book.id}}" (click)="removeBook(book)">Remove</button>
         </div>
       </div>   

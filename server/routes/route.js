@@ -29,7 +29,9 @@ router.route('/logout').post((req, res) => {
 
 router.route('/profile').get(user.getProfile);
 router.route('/changeProfile').post(user.changeProfile);    
-router.route('/changePassword').post(user.changePassword);   
+router.route('/changePassword').post(user.changePassword); 
+
+router.route('/book').get(book.getAllBooks);
 
 router.route('/book/search').get(book.search);
 router.route('/book/addbook').post(book.addBook);  

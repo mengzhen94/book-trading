@@ -1,15 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BookService } from '../book.service';
 
 @Component({
-  selector: 'app-book',
+  selector: 'app-showbooks',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  styleUrls: ['./book.component.css'],
+  providers: [BookService]
 })
 export class BookComponent implements OnInit {
 
-  constructor() { }
+    books:[any]
 
-  ngOnInit() {
-  }
+    constructor(
+        private bookService:BookService,
+        private router: Router,
+    ) { }
+
+    showBooks(){
+        this.bookService.getAllBooks()
+            .subscribe(books => {
+                if(books.length){
+                    this.books = books;
+                }
+            })
+    }
+
+    ngOnInit() {
+        this.showBooks();
+    }
 
 }
