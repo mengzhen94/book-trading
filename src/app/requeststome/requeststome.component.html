@@ -1,0 +1,17 @@
+<div class="container">
+  <ul class="form-list">
+    <li *ngFor="let request of requests">
+      <div class="form-group col-sm-2"><img src="{{request.bookimg}}" alt="bookImg"></div>
+      <div class="form-group col-sm-8">
+        <a href="{{request.booklink}}" target="_blank"><span class="text">{{request.book}}</span></a>
+        <br/>
+        <div>
+          <span class="text">{{request.approved ? "Approved!" : "Not Approved Yet!"}}</span>
+        </div>
+      </div>   
+       <div class="form-group col-sm-2">
+          <button class="add btn btn-default " (click)="approveRequest(request)">{{request.approved ? "Cancel Approve" : "Approve Request"}}</button>
+        </div>
+    </li>
+  </ul>
+</div>

@@ -6,6 +6,7 @@ import { AddnewbookComponent} from '../addnewbook/addnewbook.component';
 import { MybookComponent} from './mybook.component';
 import { ShowMybookComponent } from '../showmybooks/showmybooks.component';
 import { MyrequestComponent} from '../myrequests/myrequests.component';
+import { RequesttomeComponent } from '../requeststome/requeststome.component';
 
 const routes: Routes = [
   { path: '',
@@ -14,7 +15,8 @@ const routes: Routes = [
       { path: '', redirectTo: '/showmybook', pathMatch: 'full' },
       { path: 'showmybook', component: ShowMybookComponent },
       { path: 'addbook', component: AddnewbookComponent },
-      { path: 'request', component: MyrequestComponent },
+      { path: 'borrow', component: MyrequestComponent },
+      { path: 'requesttome', component: RequesttomeComponent },
     ]
   }
 ];

@@ -35,6 +35,20 @@ export class RequestService {
         return this.http.post(url,body,reqOptions).map(res => res);
     }
 
+    getRequeststoMe(){
+        let url = `/api/requestToMe`;
+        return this.http.get(url).map(res => res.json()); 
+    }
+
+    apprRequeststoMe(request){
+        let url = `/api/request/apprequest`;
+        let body = JSON.stringify(request);
+        let headers = new Headers({'Content-Type':'application/json'});
+        let reqOptions = new RequestOptions({headers:headers});
+
+        return this.http.post(url,body,reqOptions).map(res => res);
+    }
+
 
     openSnackBar(message:string){
         let config = new MdSnackBarConfig();

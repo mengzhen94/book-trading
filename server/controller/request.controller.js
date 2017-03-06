@@ -65,15 +65,42 @@ function deleteRequest(req, res){
         .catch(err => {
             res.json({err:err.message});
         })
-
-
 };
 
+function getRequesttoMe(req, res) {
+    let userID = req.user._id;
+    console.log("userID: ", userID);
+    Request.find({ownerid: userID})
+        .then(requests => {
+            console.log("requests: ", requests);
+            if(requests){
+                res.json(requests);
+            }else{
+                res.json();
+            }
+        })
+        .catch(err => {
+            res.json({err:err.message});
+        })
+};
 
+function apprRequeststoMe(req, res) {
+    let userID = req.user._id;
+    console.log("req.body.approved:" ,req.body.approved);
+    Request.findByIdAndUpdate({_id: req.body._id},{approved: !req.body.approved})
+        .then(success => {
+            res.json();
+        })
+        .catch(err => {
+            res.json({err: err.message});
+        })
+}
 
 
 module.exports = {
   addRequest,
   getRequest,
   deleteRequest,
+  getRequesttoMe,
+  apprRequeststoMe,
 }

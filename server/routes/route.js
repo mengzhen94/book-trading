@@ -43,6 +43,9 @@ router.route('/request/addrequest').post(request.addRequest);
 router.route('/request').get(request.getRequest);
 router.route('/request/reletemyrequest').post(request.deleteRequest); 
 
+router.route('/requestToMe').get(request.getRequesttoMe);
+router.route('/request/apprequest').post(request.apprRequeststoMe);
+
 module.exports = router;
 
     
