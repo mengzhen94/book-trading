@@ -56,6 +56,7 @@ function getMybooks(req, res){
         })
 };
 
+/*
 function removeBook(req, res){
     let userID = req.user._id;
     console.log("req.body: ", req.body);
@@ -69,6 +70,29 @@ function removeBook(req, res){
             res.json({err:err.message});
         })
 };
+
+*/
+function removeBook(req, res){
+    let userID = req.user._id;
+    console.log("req.body: ", req.body);
+    let bookID = req.body._id;
+
+    Book.findOne({_id: bookID, owner: userID})
+        .then(book => {
+            if(book.requested === false){
+                Book.remove({_id: bookID, owner: userID})
+                    .then(result => {
+                        res.json();
+                    })     
+            }else{
+                res.send(403);
+            }
+        })
+        .catch(err => {
+            res.json({err:err.message});
+        })
+};
+
 
 function getAllBooks(req, res){
     Book.find()

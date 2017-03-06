@@ -21,7 +21,6 @@ export class BookService {
     addBook(book) {
         let url = `/api/book/addbook`;
         let body = JSON.stringify(book);
-        console.log("body:", body);
         let headers = new Headers({'Content-Type':'application/json'});
         let reqOptions = new RequestOptions({headers:headers});
 

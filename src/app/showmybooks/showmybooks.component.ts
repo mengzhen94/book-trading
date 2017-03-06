@@ -28,12 +28,17 @@ export class ShowMybookComponent implements OnInit {
 
     removeBook(book) {
         this.bookService.removeBook(book)
-            .subscribe(books=>{
+            .subscribe(res=>{
                 this.bookService.openSnackBar(`Successfully Delete Book!`);
-                this.router.navigateByUrl('/showmybook');
+                this.showMybooks(); 
             },
             error=>{
-                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
+                if(error.status == 403){
+                    this.bookService.openSnackBar(`Sorry! The book has been requested...`);
+                    this.showMybooks();
+                }else{
+                    this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
+                }
             })
     }
 
