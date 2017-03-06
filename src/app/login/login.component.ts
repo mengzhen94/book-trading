@@ -21,7 +21,7 @@ export class LoginComponent {
         this.userService.login(form)
             .subscribe(result=>{
                 this.userService.openSnackBar(`Successfully Login!`);
-                this.router.navigateByUrl('/home');
+                this.router.navigateByUrl('/books', { skipLocationChange: true });
                 this.appComponent.changeToAuth(true);
             },error=>{
                 this.userService.openSnackBar(`${error.statusText}. Please Try Again`);

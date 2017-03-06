@@ -5,6 +5,7 @@ import { Routes,
 import { AddnewbookComponent} from '../addnewbook/addnewbook.component';
 import { MybookComponent} from './mybook.component';
 import { ShowMybookComponent } from '../showmybooks/showmybooks.component';
+import { MyrequestComponent} from '../myrequests/myrequests.component';
 
 const routes: Routes = [
   { path: '',
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/showmybook', pathMatch: 'full' },
       { path: 'showmybook', component: ShowMybookComponent },
-      { path: 'addbook', component: AddnewbookComponent }
+      { path: 'addbook', component: AddnewbookComponent },
+      { path: 'request', component: MyrequestComponent },
     ]
   }
 ];

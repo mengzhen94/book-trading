@@ -1,4 +1,3 @@
-<h2 class="text-center">All Books</h2>
 <div class="container">
   <ul class="form-list">
     <li *ngFor="let book of books">
@@ -9,10 +8,8 @@
           <span class="text">Id: {{book._id}}</span>
         </div>
         <div>
-          <button *ngIf="!book.requested" class="add btn btn-default " (click)="requestBook(book)">Request</button>
-          <button *ngIf="book.requested" class="add btn btn-default " [ngClass]='{disabled: true}' >Already Requested</button>
+          <button class="add btn btn-default " id="{{book.id}}" (click)="removeBook(book)">Remove</button>
         </div>
-        
       </div>   
     </li>
   </ul>

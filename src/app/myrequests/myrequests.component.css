@@ -1,0 +1,33 @@
+form {
+    margin: 0 auto;   
+}
+
+.btn {
+  background: none;
+  font-size: 10px;
+  color: #000;
+  text-align: center;
+  border-color: #000;
+}
+
+.form-list{
+    margin-top: 50px;
+}
+
+li {
+    clear: both;
+    position: relative;
+    list-style: none;
+    padding: 15px;
+}
+
+li a{
+    margin-right: 30px;
+    color: #000000;
+    font-size: 15px;
+}
+
+img{
+    height: 80px;
+    width: 80px;
+}

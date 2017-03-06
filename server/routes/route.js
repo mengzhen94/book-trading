@@ -4,6 +4,7 @@ const passport = require('passport');
 
 var user = require('../controller/user.controller');
 var book = require('../controller/book.controller');
+var request = require('../controller/request.controller');
     
 router.route('/api').get(
 	(req, res) => {
@@ -37,6 +38,8 @@ router.route('/book/search').get(book.search);
 router.route('/book/addbook').post(book.addBook);  
 router.route('/book/mybooks').get(book.getMybooks);
 router.route('/book/mybooks/removebook').post(book.removeBook);  
+
+router.route('/request/addrequest').post(request.addRequest); 
 
 module.exports = router;
 
