@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const RequestSchema = new Schema({
   book: String,
+  booklink: String,
+  bookimg: String,
   bookid: String,
   ownerid: String,
   requesterid: String,

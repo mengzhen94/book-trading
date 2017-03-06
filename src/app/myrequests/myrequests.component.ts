@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
+import { RequestService } from '../request.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-myrequests',
   templateUrl: './myrequests.component.html',
   styleUrls: ['./myrequests.component.css'],
-  providers: [BookService]
+  providers: [BookService, RequestService]
 })
 export class MyrequestComponent implements OnInit {
 
@@ -14,15 +15,16 @@ export class MyrequestComponent implements OnInit {
 
   constructor(
     private bookService:BookService,
+    private requestService:RequestService,
     private router: Router,
   ) { }
 
 
   showMyrequests(){
-        this.bookService.getMyBooks()
-            .subscribe(books => {
-                if(books.length){
-                    //this.books = books;
+        this.requestService.getMyRequests()
+            .subscribe(requests => {
+                if(requests.length){
+                    this.requests = requests;
                 }
             })
     }

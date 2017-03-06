@@ -21,12 +21,11 @@ export class RequestService {
         return this.http.post(url,body,reqOptions).map(res => res);
     }
 
-    
-
-    getAllBooks(){
-        let url = `/api/book`;
+    getMyRequests(){
+        let url = `/api/request`;
         return this.http.get(url).map(res => res.json()); 
     }
+
 
     openSnackBar(message:string){
         let config = new MdSnackBarConfig();

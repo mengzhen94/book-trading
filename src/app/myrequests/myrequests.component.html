@@ -1,16 +1,22 @@
 <div class="container">
   <ul class="form-list">
-    <li *ngFor="let book of books">
-      <div class="form-group col-sm-2"><img src="{{book.thumbnail}}" alt="bookImg"></div>
+    <li *ngFor="let request of requests">
+      <div class="form-group col-sm-2"><img src="{{request.bookimg}}" alt="bookImg"></div>
       <div class="form-group col-sm-8">
-        <a href="{{book.link}}" target="_blank"><span class="text" >{{book.title}}</span></a>
+        <a href="{{request.booklink}}" target="_blank"><span class="text">{{request.book}}</span></a>
+        <!--
         <div>
-          <span class="text">Id: {{book._id}}</span>
+          <span class="text">Id: {{request.bookid}}</span>
         </div>
+        -->
+        <br/>
         <div>
-          <button class="add btn btn-default " id="{{book.id}}" (click)="removeBook(book)">Remove</button>
+          <span class="text">{{request.approved ? "Approved!" : "Not Approved Yet!"}}</span>
         </div>
       </div>   
+       <div class="form-group col-sm-2">
+          <button class="add btn btn-default " (click)="deleteRequest(request)">Delete Request</button>
+        </div>
     </li>
   </ul>
 </div>

@@ -40,6 +40,7 @@ router.route('/book/mybooks').get(book.getMybooks);
 router.route('/book/mybooks/removebook').post(book.removeBook);  
 
 router.route('/request/addrequest').post(request.addRequest); 
+router.route('/request').get(request.getRequest);
 
 module.exports = router;
 

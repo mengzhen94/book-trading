@@ -7,6 +7,7 @@ import { MybookComponent } from './mybook.component';
 import { AddnewbookComponent} from '../addnewbook/addnewbook.component';
 import { MybookRoutingModule }   from './mybook-routing.module';
 import { ShowMybookComponent } from '../showmybooks/showmybooks.component';
+import { MyrequestComponent } from '../myrequests/myrequests.component';
  
 @NgModule({
   imports: [ 
@@ -19,6 +20,7 @@ import { ShowMybookComponent } from '../showmybooks/showmybooks.component';
     MybookComponent,
     AddnewbookComponent,
     ShowMybookComponent,
+    MyrequestComponent,
   ]
 })
 export class MybookModule { }
