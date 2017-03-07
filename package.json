@@ -15,7 +15,8 @@
   },
   "private": true,
   "engines": {
-    "npm": "4.1.1"
+    "npm": "4.1.1",
+    "node": "v6.2.0"
   },
   "dependencies": {
     "@angular/common": "^2.4.0",
