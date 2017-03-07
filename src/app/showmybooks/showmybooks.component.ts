@@ -23,6 +23,8 @@ export class ShowMybookComponent implements OnInit {
                 if(books.length){
                     this.books = books;
                 }
+            },error=>{
+                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 
@@ -34,7 +36,7 @@ export class ShowMybookComponent implements OnInit {
             },
             error=>{
                 if(error.status == 403){
-                    this.bookService.openSnackBar(`Sorry! The book has been requested...`);
+                    this.bookService.openSnackBar(`Sorry! The book has been requested. You cannot remove it.`);
                     this.showMybooks();
                 }else{
                     this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);

@@ -24,6 +24,8 @@ export class RequesttomeComponent implements OnInit {
                 if(requests.length){
                     this.requests = requests;
                 }
+            },error=>{
+                this.requestService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 
@@ -32,6 +34,8 @@ export class RequesttomeComponent implements OnInit {
             .subscribe(requests => {
                 this.requestService.openSnackBar(`Successfully Update Request !`);
                 this.showRequeststome();
+            },error=>{
+                this.requestService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 

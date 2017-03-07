@@ -25,6 +25,8 @@ export class BookComponent implements OnInit {
                 if(books.length){
                     this.books = books;
                 }
+            },error=>{
+                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 
@@ -33,6 +35,8 @@ export class BookComponent implements OnInit {
             .subscribe(books => {
                 this.requestService.openSnackBar(`Successfully Request Book!`);
                 this.showBooks();
+            },error=>{
+                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 

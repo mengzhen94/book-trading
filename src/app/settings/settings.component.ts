@@ -26,7 +26,7 @@ export class SettingsComponent implements OnInit {
     getProfile(){
         this.userService.getProfile()
             .subscribe(result=>{
-                console.log("settings result", result);
+                //console.log("settings result", result);
                 Object.keys(result).forEach(key => {
                     this.userProfile[key] = result[key];
                 })

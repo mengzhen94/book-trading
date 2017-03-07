@@ -25,7 +25,7 @@ function addBook(req, res){
     let reqBook = req.body;
     reqBook['owner'] = userID;
     let newbook = new Book(req.body);
-    console.log("newbook: ", newbook);
+    //console.log("newbook: ", newbook);
 
     Book.create(newbook)
      .then(book => {
@@ -74,7 +74,7 @@ function removeBook(req, res){
 */
 function removeBook(req, res){
     let userID = req.user._id;
-    console.log("req.body: ", req.body);
+    //console.log("req.body: ", req.body);
     let bookID = req.body._id;
 
     Book.findOne({_id: bookID, owner: userID})
@@ -85,7 +85,7 @@ function removeBook(req, res){
                         res.json();
                     })     
             }else{
-                res.send(403);
+                res.status(403).json({message: "Wrong PassWord!!"});
             }
         })
         .catch(err => {

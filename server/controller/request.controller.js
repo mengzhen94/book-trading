@@ -8,9 +8,9 @@ const Request = require('../model/request');
 
 function addRequest(req, res){
     let userID = req.user._id;
-    console.log("userID: ",userID);
+    //console.log("userID: ",userID);
     let reqBook = req.body;
-    console.log("reqBook: ",reqBook);
+    //console.log("reqBook: ",reqBook);
     let newrequest = new Request({
         book: reqBook.title,
         booklink: reqBook.link,
@@ -20,7 +20,7 @@ function addRequest(req, res){
         requesterid: userID,
         approved: false,
     });
-    console.log("newrequest: ",newrequest);
+    //console.log("newrequest: ",newrequest);
     newrequest.save()
         .then(success => {
             return Book.findOneAndUpdate({_id:reqBook._id},{requested:true})
@@ -36,7 +36,7 @@ function addRequest(req, res){
 
 function getRequest(req, res){
     let userID = req.user._id;
-    console.log("userID: ", userID);
+    //console.log("userID: ", userID);
     Request.find({requesterid: userID})
         .then(requests => {
             //console.log("requests: ", requests);
@@ -53,7 +53,7 @@ function getRequest(req, res){
 
 function deleteRequest(req, res){
     let userID = req.user._id;
-    console.log("req.body: ", req.body);
+    //console.log("req.body: ", req.body);
 
     Request.remove({_id: req.body._id})
         .then(sucess => {
@@ -69,10 +69,10 @@ function deleteRequest(req, res){
 
 function getRequesttoMe(req, res) {
     let userID = req.user._id;
-    console.log("userID: ", userID);
+    //console.log("userID: ", userID);
     Request.find({ownerid: userID})
         .then(requests => {
-            console.log("requests: ", requests);
+            //console.log("requests: ", requests);
             if(requests){
                 res.json(requests);
             }else{
@@ -86,7 +86,7 @@ function getRequesttoMe(req, res) {
 
 function apprRequeststoMe(req, res) {
     let userID = req.user._id;
-    console.log("req.body.approved:" ,req.body.approved);
+    //console.log("req.body.approved:" ,req.body.approved);
     Request.findByIdAndUpdate({_id: req.body._id},{approved: !req.body.approved})
         .then(success => {
             res.json();

@@ -8,7 +8,7 @@ function getProfile(req, res){
 		.then(
 			user => {
 				if(user){
-					console.log("mongo", user);
+					//console.log("mongo", user);
 					res.json(user);
 				}
 		}
@@ -46,7 +46,7 @@ function changePassword(req, res){
 	Users.findById({_id:req.user._id})
 		.then(
 			user => {
-				console.log("user: ", user);
+				//console.log("user: ", user);
 				if(user.validPassword(currentPass)){
 					return user;
 				}else{
@@ -55,14 +55,14 @@ function changePassword(req, res){
 			})
 		.then(
 			foundUser => {
-				console.log("foundUser: ", foundUser);
+				//console.log("foundUser: ", foundUser);
 				foundUser.password = foundUser.generateHash(newPass);
 				return foundUser.save();
 			}
 		)
 		.then(
 			changedUser => {
-				console.log("changedUser: ", changedUser);
+				//console.log("changedUser: ", changedUser);
 				res.json(changedUser);
 			}
 		)

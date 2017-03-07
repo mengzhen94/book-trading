@@ -26,6 +26,8 @@ export class MyrequestComponent implements OnInit {
                 if(requests.length){
                     this.requests = requests;
                 }
+            },error=>{
+                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 
@@ -34,6 +36,8 @@ export class MyrequestComponent implements OnInit {
             .subscribe(requests => {
                 this.bookService.openSnackBar(`Successfully Delete Request !`);
                 this.showMyrequests();
+            },error=>{
+                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
             })
     }
 

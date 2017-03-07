@@ -24,18 +24,17 @@ export class AddnewbookComponent implements OnInit {
     if(title !== ''){
       this.bookService.searchBook(title)
         .subscribe(books=>{
-        this.loading = false;
-        if(books.length){
-          this.books = books;
           this.loading = false;
-        } else {
-          
-        }
+          if(books.length){
+            this.books = books;
+            this.loading = false;
+          }
       },
       error=>{
         this.loading = false;
         this.error = true;
         console.log(error);
+        this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
       })
     }
   }

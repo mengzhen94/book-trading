@@ -1,10 +1,10 @@
 'use strict';
 const express = require("express"),
-	mongoose = require("mongoose"),
-	passport = require('passport'),
-	session = require('express-session'),
-	bodyParser = require('body-parser'),
-    path = require('path');
+			mongoose = require("mongoose"),
+			passport = require('passport'),
+			session = require('express-session'),
+			bodyParser = require('body-parser'),
+			path = require('path');
 
 var app = express();
 require('dotenv').load();
@@ -41,7 +41,6 @@ app.use(passport.session());
 require('./server/config/passport');
 
 let routes = require('./server/routes/route');
-
 
 app.use('/api', routes);
 
