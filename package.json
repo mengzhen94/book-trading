@@ -2,6 +2,7 @@
   "name": "book-trading",
   "version": "0.0.0",
   "license": "MIT",
+  "angular-cli": {},
   "scripts": {
     "ng": "ng",
     "start1": "ng serve",
