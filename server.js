@@ -10,7 +10,7 @@ var app = express();
 require('dotenv').load();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URI);
 
 let connection = mongoose.connection;
 connection.on('error',()=>{
