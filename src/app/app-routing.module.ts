@@ -8,8 +8,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { BookComponent } from './book/book.component';
  
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: DashboardComponent },
+    { path: '', redirectTo: '/books', pathMatch: 'full' },
+    //{ path: 'home', component: DashboardComponent },
     { path: 'signup', component: SignUpComponent },
     { path: 'login', component: LoginComponent },
     { path: 'profile', component: SettingsComponent },

@@ -4,10 +4,10 @@ form {
 
 .btn {
   background: none;
-  font-size: 10px;
   color: #000;
   text-align: center;
   border-color: #000;
+  margin: 0 auto;
 }
 
 .form-list{

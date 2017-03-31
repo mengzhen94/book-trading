@@ -6,7 +6,7 @@ import { RequestService } from '../request.service';
 @Component({
   selector: 'app-showbooks',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
+  styleUrls: ['./book.component.scss'],
   providers: [BookService, RequestService]
 })
 export class BookComponent implements OnInit {
@@ -36,7 +36,7 @@ export class BookComponent implements OnInit {
                 this.requestService.openSnackBar(`Successfully Request Book!`);
                 this.showBooks();
             },error=>{
-                this.bookService.openSnackBar(`${error.statusText}. Please Try Again`);
+                this.bookService.openSnackBar(`${error.statusText}. Please Login!`);
             })
     }
 

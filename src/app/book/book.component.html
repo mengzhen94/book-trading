@@ -1,19 +1,19 @@
-<h2 class="text-center">All Books</h2>
+<div class="text-center"  >
+  <h1>Book Trading Club</h1>
+</div>
 <div class="container">
-  <ul class="form-list">
-    <li *ngFor="let book of books">
-      <div class="form-group col-sm-2"><img src="{{book.thumbnail}}" alt="bookImg"></div>
-      <div class="form-group col-sm-8">
-        <a href="{{book.link}}" target="_blank"><span class="text" >{{book.title}}</span></a>
-        <div>
-          <span class="text">Id: {{book._id}}</span>
-        </div>
-        <div>
-          <button *ngIf="!book.requested" class="add btn btn-default " (click)="requestBook(book)">Request</button>
-          <button *ngIf="book.requested" class="add btn btn-default " [ngClass]='{disabled: true}' >Already Requested</button>
-        </div>
-        
-      </div>   
-    </li>
-  </ul>
+    <ul class='row' *ngFor="let book of books">
+      <li class="col-lg-2 col-md-3 col-sm-4 col-xs-12 book">
+          <p class="text-center"><a href="{{book.link}}" target="_blank">{{book.title}} <i class="fa fa-external-link" aria-hidden="true"></i></a><p>
+          <hr>
+          <div class="bookimg">
+            <img src="{{book.thumbnail}}" alt="bookImg">
+          </div>
+          <hr>
+          <div>
+            <button *ngIf="!book.requested" class="add btn" (click)="requestBook(book)">Request</button>
+            <button *ngIf="book.requested" class="add btn" [ngClass]='{disabled: true}'>Already Requested</button>
+          </div> 
+      </li>
+    </ul>
 </div>
