@@ -39,19 +39,20 @@ export class SettingsComponent implements OnInit {
         this.userService.changeProfile(form)
             .subscribe(result=>{
                 this.userService.openSnackBar(`Successfully Saved Profile!`);
-                this.router.navigateByUrl('/profile');
+                this.router.navigateByUrl('/mybooks');
             },error=>{
                 this.userService.openSnackBar(`${error.statusText}. Please Try Again`);
             });
     }
 
     changePassword(form) {
+        /*
         this.userService.changePassword(form)
             .subscribe(result=>{
                 this.userService.logout()
                     .subscribe(result=>{
                         this.userService.openSnackBar(`Successfully Update Password!`);
-                        this.router.navigateByUrl('login');
+                        this.router.navigateByUrl('/login');
                         this.appComponent.changeToAuth(false);
                     })
             },
@@ -62,6 +63,8 @@ export class SettingsComponent implements OnInit {
                     this.userService.openSnackBar(`${error.statusText}. Please Try Again`);
                 }
             });
+        */
+        this.userService.openSnackBar(`Sorry, this function is closed now.`);
     }
 
 

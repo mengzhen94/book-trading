@@ -25,7 +25,7 @@ export class AppComponent  implements OnInit {
       this.userService.logout()
         .subscribe(result=>{
                 this.userService.openSnackBar(`Successfully Logout!`);
-                this.router.navigateByUrl('/home');
+                this.router.navigateByUrl('/books');
                 this.changeToAuth(false);
             },error=>{
                 this.userService.openSnackBar(`${error.statusText}. Please Try Again`);

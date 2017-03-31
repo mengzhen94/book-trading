@@ -4,10 +4,10 @@ form {
 
 .btn {
   background: none;
+  font-size: 10px;
   color: #000;
   text-align: center;
   border-color: #000;
-  margin: 0 auto;
 }
 
 .form-list{
@@ -36,6 +36,7 @@ img{
     padding-left: 0px; 
     margin-right: 0px;
     margin-left: 0px; 
+    min-height: 580px;
 }
 
 .form-list {

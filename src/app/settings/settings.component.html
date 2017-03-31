@@ -19,6 +19,7 @@
 
 <div class="container">
     <h1>Change Password</h1>
+    <h3>Sorry, this function is closed now.</h3>
     <form #form2="ngForm" (ngSubmit)="changePassword(form2.value)" >
         <div class="form-group">
             <label for="oldpassword">Current Password</label>
@@ -28,6 +29,6 @@
             <label for="newpassword">New Password</label>
             <input type="newpassword" class="form-control" id="newpassword" name="newpassword" required ngModel>
         </div>
-        <button type="submit" class="btn btn-success">Save Password</button>
+        <button type="submit" class="btn btn-success" [ngClass]='{disabled: true}'>Save Password</button>
     </form>
 </div>

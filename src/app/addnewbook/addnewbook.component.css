@@ -35,3 +35,7 @@ img{
 .loading {
     clear: both;
 }
+
+.container {
+    min-height: 580px;
+}
